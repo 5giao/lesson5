@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 13:51:21
- * @LastEditTime: 2020-11-13 20:09:09
+ * @LastEditTime: 2020-11-13 21:11:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \登录\app\src\view\List\index.vue
@@ -32,16 +32,21 @@
 
 <script>
 import axios from "axios";
+import { mapActions ,mapState} from "vuex";
 export default {
   data() {
     return {
-      list: []
+      list: [],
+      vuexList: []
     };
   },
   created() {
     this.getList();
+    console.log(this, "this");
+    console.log(this.$store.state.vuexList,'vuexList')
   },
   methods: {
+    ...mapActions(["change_list"]),
     getList() {
       axios({
         method: "get",
@@ -56,6 +61,8 @@ export default {
       })
         .then(res => {
           this.list = res.data.data.list;
+          //this.$store.dispatch("change_list", res.data.data.list);
+          this.change_list(res.data.data.list);
           console.log(this.list);
         })
         .catch(err => {
@@ -64,9 +71,14 @@ export default {
         });
     },
     ToDetail(scope) {
-      this.$router.push(`/detail/${scope.row.id}`)
+      this.$router.push(`/detail/${scope.row.id}`);
     }
-  }
+  },
+  computed: {
+    //   ...mapState({
+    //       vuexList:store=>store.vuexList
+    //   })
+  },
 };
 </script>
 
