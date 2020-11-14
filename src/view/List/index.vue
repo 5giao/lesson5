@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 13:51:21
- * @LastEditTime: 2020-11-13 21:11:19
+ * @LastEditTime: 2020-11-14 10:47:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \登录\app\src\view\List\index.vue
@@ -43,7 +43,7 @@ export default {
   created() {
     this.getList();
     console.log(this, "this");
-    console.log(this.$store.state.vuexList,'vuexList')
+    console.log(this.$store.state.vuexList,'vuexList');
   },
   methods: {
     ...mapActions(["change_list"]),
@@ -71,13 +71,13 @@ export default {
         });
     },
     ToDetail(scope) {
-      this.$router.push(`/detail/${scope.row.id}`);
+      this.$router.push(`/layout/detail/${scope.row.id}`);
     }
   },
   computed: {
-    //   ...mapState({
-    //       vuexList:store=>store.vuexList
-    //   })
+      ...mapState({
+          vuexList:store=>store.vuexList
+      })
   },
 };
 </script>

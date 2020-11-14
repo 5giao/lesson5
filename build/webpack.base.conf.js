@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-13 13:40:27
+ * @LastEditTime: 2020-11-14 10:19:59
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \登录\app\build\webpack.base.conf.js
+ */
 'use strict'
 const path = require('path')
 const utils = require('./utils')
@@ -64,6 +72,9 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },{
+        test:/\sass/,
+        loaders:['css','sass','style']
       }
     ]
   },

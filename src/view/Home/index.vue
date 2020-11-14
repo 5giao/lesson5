@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 13:50:35
- * @LastEditTime: 2020-11-13 14:11:31
+ * @LastEditTime: 2020-11-14 10:47:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \登录\app\src\view\Home\index.vue
@@ -32,7 +32,7 @@ export default {
         alert(res.data.msg);
         if (res.data.code === 200) {
           localStorage.setItem("token", res.data.data.token);
-          this.$router.push("/list");
+          this.$router.push("/layout/list");
         }
       });
     }
